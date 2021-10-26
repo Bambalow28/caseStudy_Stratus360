@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber City Comics</title>
+    <script src='comicdata.js'></script>
+</head>
+<center>
+    <body onload="getComicData()">
+        <h1>Cyber City Comics</h1>
+        <form>
+            <label for="fname">Search Comic:</label><br>
+            <input type="text" id="comicSearchValue" name="comicSearchValue">
+            <button onclick="getComicDataFromSearch()" type="button">Search</button>
+          </form>
+        <h2 id="comicTitle">Not Available</h2>
+        <a>Date Published: </a><a id="datePublished">Not Available</a>
+        <div id="comicImg"></div>
+        <br>
+        <button onclick="previousComicBtn()" type="button">Previous</button><button onclick="randomComicBtn()" type="button">Random</button><button onclick="nextComicBtn()" type="button">Next</button>
+    </body>
+</center>
+</html>
