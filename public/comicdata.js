@@ -12,9 +12,10 @@
             let resp = await fetch(comicUrl, {
                 method: 'GET',
                 headers: {
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    'Access-Control-Allow-Origin': 'https://case-study-stratus-360.herokuapp.com'
                 },
-                // mode: 'cors',
+                mode: 'cors',
                 credentials: 'same-origin'
             });
 

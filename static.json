@@ -4,7 +4,7 @@
     "https_only": true,
     "headers": {
         "/**": {
-            "Access-Control-Allow_Origin": "*"
+            "Access-Control-Allow_Origin": "https://case-study-stratus-360.herokuapp.com"
         }
     }
 }
