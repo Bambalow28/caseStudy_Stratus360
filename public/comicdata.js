@@ -12,7 +12,8 @@
             let resp = await fetch(comicUrl, {
                 method: 'GET',
                 headers: {
-                    'Accept': 'application/json'
+                    'Accept': 'application/json',
+                    "Access-Control-Allow-Origin": "*"
                 },
                 mode: 'cors'
             });
