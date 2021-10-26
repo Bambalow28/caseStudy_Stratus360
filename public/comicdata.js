@@ -12,7 +12,7 @@
             let resp = await fetch(comicUrl, {
                 method: "GET",
                 mode: 'cors',
-                credentials: 'same-origin', // include, *same-origin, omit
+                credentials: 'include', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json'
     },
