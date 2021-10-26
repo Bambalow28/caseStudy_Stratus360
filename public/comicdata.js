@@ -14,7 +14,8 @@
                 headers: {
                     'Accept': 'application/json'
                 },
-                mode: 'cors'
+                mode: 'cors',
+                credentials: 'same-origin'
             });
 
             //If GET is success then read 
