@@ -10,8 +10,12 @@
 
             //Using Fetch Method, Get the result when requesting comicURL
             let resp = await fetch(comicUrl, {
-                method: "PUT",
-                mode: 'cors'
+                method: "GET",
+                mode: 'cors',
+                credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+    },
             });
 
             //If GET is success then read 
