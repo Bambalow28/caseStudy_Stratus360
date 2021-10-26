@@ -29,7 +29,7 @@
                 headers: {
                     'Accept': 'application/json'
                 },
-                mode: 'cors',
+                mode: 'no-cors',
                 credentials: 'same-origin'
             });
 
