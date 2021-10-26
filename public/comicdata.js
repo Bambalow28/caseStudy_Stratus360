@@ -30,7 +30,7 @@
                     'Accept': 'application/json'
                 },
                 mode: 'cors',
-                credentials: 'omit'
+                credentials: 'same-origin'
             });
 
             //If GET is success then read 
