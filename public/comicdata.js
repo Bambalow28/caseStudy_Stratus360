@@ -10,6 +10,7 @@
 
             //Using Fetch Method, Get the result when requesting comicURL
             let resp = await fetch(comicUrl, {
+                method: "PUT",
                 mode: 'cors'
             });
 
