@@ -5,6 +5,7 @@
     "headers": {
         "/**": {
             "Access-Control-Allow_Origin": "*"
-        }
+        },
+        "Content-Type": "application/json"
     }
 }
