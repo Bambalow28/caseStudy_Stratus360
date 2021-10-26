@@ -13,9 +13,6 @@
                 method: "GET",
                 mode: 'cors',
                 credentials: 'include', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-    },
             });
 
             //If GET is success then read 
