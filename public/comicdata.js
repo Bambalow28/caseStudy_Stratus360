@@ -2,21 +2,6 @@
         //This Variable stores the latest Comic Number
         var latestComicNum;
 
-        async function testing() {
-            fetch('https://xkcd.com/info.0.json')
-  .then(response => {
-     const contentType = response.headers.get('content-type');
-     if (!contentType || !contentType.includes('application/json')) {
-       throw new TypeError("Oops, we haven't got JSON!");
-     }
-     return response.json();
-  })
-  .then(data => {
-      /* process your data further */
-  })
-  .catch(error => console.error(error));
-        }
-
         //This function is asynchronous which will wait until the comic API has been loaded where it
         //will return the result of the API.
         async function getComicData() {
@@ -29,7 +14,7 @@
                 headers: {
                     'Accept': 'application/json'
                 },
-                mode: 'no-cors',
+                mode: 'cors',
                 credentials: 'same-origin'
             });
 
@@ -54,6 +39,8 @@
         async function getComicDataFromSearch() {
             //Get Search Value
             var comicInput = document.getElementById("comicSearchValue").value;
+            latestComicNum = parseInt(comicInput);
+            console.log(latestComicNum);
 
             //This Variable is to show comic based of search
             let randomComic = `https://xkcd.com/${comicInput}/info.0.json`;
