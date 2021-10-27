@@ -3,22 +3,29 @@
 <head>
     <title>Cyber City Comics</title>
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="public/src/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="src/stylesheet.css">
     <script src='comicdata.js'></script>
 </head>
 <body onload="getComicData()">
     <center>
-        <h1>Cyber City Comics</h1>
-        <form>
-            <label for="fname">Search Comic:</label><br>
-            <input type="text" id="comicSearchValue" name="comicSearchValue">
-            <button onclick="getComicDataFromSearch()" type="button">Search</button>
-          </form>
-        <h2 id="comicTitle">Not Available</h2>
-        <a>Date Published: </a><a id="datePublished">Not Available</a>
-        <div id="comicImg"></div>
-        <br>
-        <button onclick="previousComicBtn()" type="button">Previous</button><button onclick="randomComicBtn()" type="button">Random</button><button onclick="nextComicBtn()" type="button">Next</button>
+        <div class="comicTitlePage">
+            <h1 align="Middle">Cyber City Comics</h1>
+            <form>
+                <input class="searchInput" type="text" id="comicSearchValue" name="comicSearchValue" placeholder="Search Comic">
+                <button class="searchBtn" onclick="getComicDataFromSearch()" type="button">Search</button>
+              </form>
+        </div>
+        <div class="mainComicStrip">
+            <h2 class="comicTitle" id="comicTitle">Not Available</h2>
+            <a class="datePublished">Date Published: </a><a class="dateShow" id="dateShow">Not Available</a>
+            <div class="comicImg" id="comicImg"></div>
+            <br>
+            <div align="Middle" class="navBtn">
+            <button class="prevBtn" onclick="previousComicBtn()" type="button">PREVIOUS</button>
+            <button class="randomBtn" onclick="randomComicBtn()" type="button">RANDOM</button>
+            <button class="nextBtn" onclick="nextComicBtn()" type="button">NEXT</button>
+            </div>
+        </div>
     </center>
-    </body>
+</body>
 </html>

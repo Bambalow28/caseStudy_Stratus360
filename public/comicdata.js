@@ -1,6 +1,7 @@
 
         //This Variable stores the latest Comic Number
         var latestComicNum;
+        var currentComicNum;
 
         //This function is asynchronous which will wait until the comic API has been loaded where it
         //will return the result of the API.
@@ -25,7 +26,7 @@
             var year = data.year;
             latestComicNum = data.num;
 
-            document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
+            document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
         });
         }
 
@@ -33,6 +34,7 @@
             //Get Search Value
             var comicInput = document.getElementById("comicSearchValue").value;
             latestComicNum = parseInt(comicInput);
+            currentComicNum = latestComicNum;
             console.log(latestComicNum);
 
             //This Variable is to show comic based of search
@@ -53,6 +55,7 @@
             var month = data.month;
             var day = data.day;
             var year = data.year;
+            var issueNum = data.num;
 
             document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
         });
@@ -61,9 +64,9 @@
         //PREVIOUS BUTTON
         async function previousComicBtn() {
             //Randomize a number from 1 to latest issue number
-            var parseComicToInt = parseInt(latestComicNum);
+            var parseComicToInt = parseInt(currentComicNum);
             var prevComic = parseComicToInt - 1;
-            latestComicNum = prevComic;
+            currentComicNum = prevComic;
             console.log("Previous Comic Number: " + prevComic);
 
             //This Variable is to show comic based of search
@@ -84,6 +87,7 @@
             var month = data.month;
             var day = data.day;
             var year = data.year;
+            var issueNum = data.num;
 
             document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
         });
@@ -93,8 +97,8 @@
         async function randomComicBtn() {
             //Randomize a number from 1 to latest issue number
             var randomNum = Math.floor((Math.random() * latestComicNum) + 1);
-            latestComicNum = randomNum;
-            console.log("Random Number is: " + latestComicNum)
+            currentComicNum = randomNum;
+            console.log("Random Number is: " + randomNum)
 
             //This Variable is to show comic based of search
             let randomComic = `https://xkcd.com/${randomNum}/info.0.json`;
@@ -122,10 +126,10 @@
         //NEXT BUTTON
         async function nextComicBtn() {
             //Randomize a number from 1 to latest issue number
-            var parseComicToInt = parseInt(latestComicNum);
+            var parseComicToInt = parseInt(currentComicNum);
             
             var nextComic = parseComicToInt + 1;
-            latestComicNum = nextComic;
+            currentComicNum = nextComic;
             console.log("Next Comic Number: " + nextComic);
 
             //This Variable is to show comic based of search

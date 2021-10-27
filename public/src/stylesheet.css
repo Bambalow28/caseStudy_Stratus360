@@ -1,3 +1,116 @@
-body {
-    background-image: url("/public/images/siteBackground.jpg");
+html {
+    /* background-image: url('images/siteBackground.jpg'); */
+    background: rgba(18, 18, 18, 1.0)
+}
+
+.comicTitlePage {
+    color: whitesmoke;
+    background: rgba(117, 80, 166, 1.0);
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin: 0;
+}
+
+#searchComicTxt {
+    color: white;
+    font-size: 40px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.searchInput {
+    color: black;
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    border-radius: 15px;
+    padding: 20px; 
+    width: 200px;
+    height: 5px; 
+}
+
+.datePublished {
+    color: black;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+
+.dateShow {
+    color: black;
+    font-size: 12px;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+
+.comicTitle {
+    color: black;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.searchBtn {
+    color: black;
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-radius: 40px;
+    padding: 0px; 
+    width: 100px;
+    height: 40px; 
+    margin: auto;
+    border: none;
+}
+
+.comicImg {
+    width: 100%;
+    height: 100%;
+}
+
+.prevBtn {
+    color: white;
+    background: rgba(130, 131, 130, 1.0);
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-radius: 25px;
+    padding: 20px; 
+    width: 105px;
+    border: none;
+}
+
+.randomBtn {
+    color: black;
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-radius: 25px;
+    padding: 20px; 
+    width: 105px;
+    border: none;
+}
+
+.nextBtn {
+    color: white;
+    background: rgba(130, 131, 130, 1.0);
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-radius: 25px;
+    padding: 20px; 
+    width: 105px;
+    border: none;
+}
+
+.mainComicStrip {
+    background: white;
+    width: 800px;
+    height: auto;
+    padding-top: 5px;
+    padding-left: 20px;
+    overflow: auto;
+    border-radius: 25px;
+}
+
+.navBtn {
+    padding-bottom: 10px;
 }
