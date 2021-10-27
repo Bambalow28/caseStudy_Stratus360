@@ -3,11 +3,11 @@
 <head>
     <title>Cyber City Comics</title>
     <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" type"text/css" href="./src/stylsheet.css">
+    <link rel="stylesheet" href="public/src/stylesheet.css">
     <script src='comicdata.js'></script>
 </head>
-<center>
-    <body onload="getComicData()">
+<body onload="getComicData()">
+    <center>
         <h1>Cyber City Comics</h1>
         <form>
             <label for="fname">Search Comic:</label><br>
@@ -19,6 +19,6 @@
         <div id="comicImg"></div>
         <br>
         <button onclick="previousComicBtn()" type="button">Previous</button><button onclick="randomComicBtn()" type="button">Random</button><button onclick="nextComicBtn()" type="button">Next</button>
+    </center>
     </body>
-</center>
 </html>

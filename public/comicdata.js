@@ -9,14 +9,7 @@
             let comicUrl = 'https://xkcd.com/info.0.json';
 
             //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(comicUrl, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                },
-                mode: 'cors',
-                credentials: 'include'
-            });
+            let resp = await fetch(comicUrl);
 
             //If GET is success then read 
             let comicData = await resp.json().then(data => {
