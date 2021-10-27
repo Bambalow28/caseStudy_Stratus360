@@ -15,7 +15,7 @@
                     'Accept': 'application/json'
                 },
                 mode: 'cors',
-                credentials: 'same-origin'
+                credentials: 'include'
             });
 
             //If GET is success then read 
