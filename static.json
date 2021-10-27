@@ -3,12 +3,7 @@
     "clean_urls": true,
     "headers": {
         "/**": {
-            "Access-Control-Allow_Origin": "*"
-        }
-    },
-    "proxies": {
-        "/api/": {
-            "origin": "https://case-study-stratus-360.herokuapp.com/"
+            "Access-Control-Allow-Origin": "*"
         }
     }
 }
