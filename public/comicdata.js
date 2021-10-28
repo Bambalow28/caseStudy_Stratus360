@@ -13,12 +13,12 @@
             let resp = await fetch(comicUrl).then((resp) => {
 
                 //If Data is not okay then throw error
-                if(!data.ok) {
+                if(!resp.ok) {
                     throw new Error(data.error);
                 }
 
                 //Otherwise, return data
-                return data.json();
+                return resp.json();
 
             }).then(data => {
                 //If Successful then get data needed from API
@@ -37,6 +37,8 @@
                 var day = data.day;
                 var year = data.year;
                 latestComicNum = data.num;
+                currentComicNum = latestComicNum;
+                console.log('Current Comic: ' + currentComicNum)
 
                 document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
 
@@ -64,12 +66,12 @@
             let resp = await fetch(specifiedComic).then((resp) => {
 
                 //If Data is not okay then throw error
-                if(!data.ok) {
+                if(!resp.ok) {
                     throw new Error(data.error);
                 }
 
                 //Otherwise, return data
-                return data.json();
+                return resp.json();
 
             }).then(data => {
                 //If Successful then get data needed from API
@@ -81,13 +83,12 @@
                 var img = document.createElement("img");
                 img.src = data.img;
                 var showImage = document.getElementById("comicImg");
-                showImage.appendChild(img); 
+                showImage.replaceChildren(img); 
 
                 //Comic Published Date
                 var month = data.month;
                 var day = data.day;
                 var year = data.year;
-                latestComicNum = data.num;
 
                 document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
 
@@ -109,15 +110,15 @@
             let previousComic = `https://xkcd.com/${prevComic}/info.0.json`;
 
             //Fetch Method to get result of previousComic 
-            let resp = await fetch(comicUrl).then((resp) => {
+            let resp = await fetch(previousComic).then((resp) => {
 
                 //If Data is not okay then throw error
-                if(!data.ok) {
+                if(!resp.ok) {
                     throw new Error(data.error);
                 }
 
                 //Otherwise, return data
-                return data.json();
+                return resp.json();
 
             }).then(data => {
                 //If Successful then get data needed from API
@@ -129,13 +130,12 @@
                 var img = document.createElement("img");
                 img.src = data.img;
                 var showImage = document.getElementById("comicImg");
-                showImage.appendChild(img); 
+                showImage.replaceChildren(img); 
 
                 //Comic Published Date
                 var month = data.month;
                 var day = data.day;
                 var year = data.year;
-                latestComicNum = data.num;
 
                 document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
 
@@ -150,21 +150,21 @@
             //Randomize a number from 1 to latest issue number
             var randomNum = Math.floor((Math.random() * latestComicNum) + 1);
             currentComicNum = randomNum;
-            console.log("Random Number is: " + randomNum)
+            console.log("Random Number is: " + currentComicNum);
 
             //This Variable is to show comic based of search
             let randomComic = `https://xkcd.com/${randomNum}/info.0.json`;
 
            //Fetch Method to get result of randomComic 
-           let resp = await fetch(comicUrl).then((resp) => {
+           let resp = await fetch(randomComic).then((resp) => {
 
             //If Data is not okay then throw error
-            if(!data.ok) {
+            if(!resp.ok) {
                 throw new Error(data.error);
             }
 
             //Otherwise, return data
-            return data.json();
+            return resp.json();
 
         }).then(data => {
             //If Successful then get data needed from API
@@ -176,13 +176,12 @@
             var img = document.createElement("img");
             img.src = data.img;
             var showImage = document.getElementById("comicImg");
-            showImage.appendChild(img); 
+            showImage.replaceChildren(img); 
 
             //Comic Published Date
             var month = data.month;
             var day = data.day;
             var year = data.year;
-            latestComicNum = data.num;
 
             document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
 
@@ -196,8 +195,11 @@
         async function nextComicBtn() {
             //Get Valule of Current Comic Strip and parse into Int
             var parseComicToInt = parseInt(currentComicNum);
-            
-            //Add one to the current comic strip number and store into the currentComicNum variable
+
+            if (currentComicNum == latestComicNum) {
+                console.log('You are on the latest comic')
+            } else {
+                //Add one to the current comic strip number and store into the currentComicNum variable
             var nextComic = parseComicToInt + 1;
             currentComicNum = nextComic;
             console.log("Next Comic Number: " + nextComic);
@@ -206,15 +208,15 @@
             let nextComicStrip = `https://xkcd.com/${nextComic}/info.0.json`;
 
             //Fetch Method to get result of nextComicStrip
-            let resp = await fetch(comicUrl).then((resp) => {
+            let resp = await fetch(nextComicStrip).then((resp) => {
 
                 //If Data is not okay then throw error
-                if(!data.ok) {
+                if(!resp.ok) {
                     throw new Error(data.error);
                 }
 
                 //Otherwise, return data
-                return data.json();
+                return resp.json();
 
             }).then(data => {
                 //If Successful then get data needed from API
@@ -226,13 +228,12 @@
                 var img = document.createElement("img");
                 img.src = data.img;
                 var showImage = document.getElementById("comicImg");
-                showImage.appendChild(img); 
+                showImage.replaceChildren(img); 
 
                 //Comic Published Date
                 var month = data.month;
                 var day = data.day;
                 var year = data.year;
-                latestComicNum = data.num;
 
                 document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
 
@@ -240,4 +241,6 @@
                 //Catch Any Error
                 console.log(error)
             });
+            }
+            
         }
