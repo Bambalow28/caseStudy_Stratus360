@@ -5,7 +5,7 @@ const router = express.Router();
 const cors = require("cors")
 
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: 'https://case-study-stratus-360.herokuapp.com/',
     }));
 
 app.use(express.static(path.join(__dirname, 'public')));
