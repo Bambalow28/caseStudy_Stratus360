@@ -1,64 +1,100 @@
 
-        //This Variable stores the latest Comic Number
+        //Global Variables that stores the latest comic number and current comic number.
         var latestComicNum;
         var currentComicNum;
 
-        //This function is asynchronous which will wait until the comic API has been loaded where it
-        //will return the result of the API.
+        //This function gets loaded on webLoad and shows Latest Comic.
         async function getComicData() {
-            //Variable for the Homepage which shows latest comic API
+
+            //Url for the main comic API
             let comicUrl = 'https://xkcd.com/info.0.json';
 
-            //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(comicUrl);
+            //Fetch Method to get result of comicUrl 
+            let resp = await fetch(comicUrl).then((resp) => {
 
-            //If GET is success then read 
-            let comicData = await resp.json().then(data => {
-            document.getElementById("comicTitle").innerHTML = data.title;
+                //If Data is not okay then throw error
+                if(!data.ok) {
+                    throw new Error(data.error);
+                }
 
-            var img = document.createElement("img");
-            img.src = data.img;
-            var showImage = document.getElementById("comicImg");
-            showImage.appendChild(img); 
+                //Otherwise, return data
+                return data.json();
 
-            var month = data.month;
-            var day = data.day;
-            var year = data.year;
-            latestComicNum = data.num;
+            }).then(data => {
+                //If Successful then get data needed from API
 
-            document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
-        });
+                //Comic Title
+                document.getElementById("comicTitle").innerHTML = data.title;
+
+                //Comic Image
+                var img = document.createElement("img");
+                img.src = data.img;
+                var showImage = document.getElementById("comicImg");
+                showImage.appendChild(img); 
+
+                //Comic Published Date
+                var month = data.month;
+                var day = data.day;
+                var year = data.year;
+                latestComicNum = data.num;
+
+                document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
+
+            }).catch(function(error) {
+                //Catch Any Error
+                console.log(error)
+            })
         }
 
+        //GETTING COMIC DATA FROM SEARCH
         async function getComicDataFromSearch() {
+
             //Get Search Value
             var comicInput = document.getElementById("comicSearchValue").value;
+
+            //Parse String to Int
             latestComicNum = parseInt(comicInput);
             currentComicNum = latestComicNum;
-            console.log(latestComicNum);
+            console.log('Comic Issue #:' + latestComicNum);
 
-            //This Variable is to show comic based of search
-            let randomComic = `https://xkcd.com/${comicInput}/info.0.json`;
+            //Add comicInput value into address bar for specific comic strip
+            let specifiedComic = `https://xkcd.com/${comicInput}/info.0.json`;
 
-            //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(randomComic);
+            //Fetch Method to get result of specifiedComic 
+            let resp = await fetch(specifiedComic).then((resp) => {
 
-            //If GET is success then read 
-            let comicData = await resp.json().then(data => {
-            document.getElementById("comicTitle").innerHTML = data.title;
+                //If Data is not okay then throw error
+                if(!data.ok) {
+                    throw new Error(data.error);
+                }
 
-            var img = document.createElement("img");
-            img.src = data.img;
-            var showImage = document.getElementById("comicImg");
-            showImage.replaceChildren(img);
+                //Otherwise, return data
+                return data.json();
 
-            var month = data.month;
-            var day = data.day;
-            var year = data.year;
-            var issueNum = data.num;
+            }).then(data => {
+                //If Successful then get data needed from API
 
-            document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
-        });
+                //Comic Title
+                document.getElementById("comicTitle").innerHTML = data.title;
+
+                //Comic Image
+                var img = document.createElement("img");
+                img.src = data.img;
+                var showImage = document.getElementById("comicImg");
+                showImage.appendChild(img); 
+
+                //Comic Published Date
+                var month = data.month;
+                var day = data.day;
+                var year = data.year;
+                latestComicNum = data.num;
+
+                document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
+
+            }).catch(function(error) {
+                //Catch Any Error
+                console.log(error)
+            });
         }
 
         //PREVIOUS BUTTON
@@ -70,27 +106,43 @@
             console.log("Previous Comic Number: " + prevComic);
 
             //This Variable is to show comic based of search
-            let randomComic = `https://xkcd.com/${prevComic}/info.0.json`;
+            let previousComic = `https://xkcd.com/${prevComic}/info.0.json`;
 
-            //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(randomComic);
+            //Fetch Method to get result of previousComic 
+            let resp = await fetch(comicUrl).then((resp) => {
 
-            //If GET is success then read 
-            let comicData = await resp.json().then(data => {
-            document.getElementById("comicTitle").innerHTML = data.title;
+                //If Data is not okay then throw error
+                if(!data.ok) {
+                    throw new Error(data.error);
+                }
 
-            var img = document.createElement("img");
-            img.src = data.img;
-            var showImage = document.getElementById("comicImg");
-            showImage.replaceChildren(img);
+                //Otherwise, return data
+                return data.json();
 
-            var month = data.month;
-            var day = data.day;
-            var year = data.year;
-            var issueNum = data.num;
+            }).then(data => {
+                //If Successful then get data needed from API
 
-            document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
-        });
+                //Comic Title
+                document.getElementById("comicTitle").innerHTML = data.title;
+
+                //Comic Image
+                var img = document.createElement("img");
+                img.src = data.img;
+                var showImage = document.getElementById("comicImg");
+                showImage.appendChild(img); 
+
+                //Comic Published Date
+                var month = data.month;
+                var day = data.day;
+                var year = data.year;
+                latestComicNum = data.num;
+
+                document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
+
+            }).catch(function(error) {
+                //Catch Any Error
+                console.log(error)
+            });
         }
 
         //RANDOM BUTTON
@@ -103,54 +155,89 @@
             //This Variable is to show comic based of search
             let randomComic = `https://xkcd.com/${randomNum}/info.0.json`;
 
-            //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(randomComic);
+           //Fetch Method to get result of randomComic 
+           let resp = await fetch(comicUrl).then((resp) => {
 
-            //If GET is success then read 
-            let comicData = await resp.json().then(data => {
+            //If Data is not okay then throw error
+            if(!data.ok) {
+                throw new Error(data.error);
+            }
+
+            //Otherwise, return data
+            return data.json();
+
+        }).then(data => {
+            //If Successful then get data needed from API
+
+            //Comic Title
             document.getElementById("comicTitle").innerHTML = data.title;
 
+            //Comic Image
             var img = document.createElement("img");
             img.src = data.img;
             var showImage = document.getElementById("comicImg");
-            showImage.replaceChildren(img);
+            showImage.appendChild(img); 
 
+            //Comic Published Date
             var month = data.month;
             var day = data.day;
             var year = data.year;
+            latestComicNum = data.num;
 
-            document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
+            document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
+
+        }).catch(function(error) {
+            //Catch Any Error
+            console.log(error)
         });
         }
 
         //NEXT BUTTON
         async function nextComicBtn() {
-            //Randomize a number from 1 to latest issue number
+            //Get Valule of Current Comic Strip and parse into Int
             var parseComicToInt = parseInt(currentComicNum);
             
+            //Add one to the current comic strip number and store into the currentComicNum variable
             var nextComic = parseComicToInt + 1;
             currentComicNum = nextComic;
             console.log("Next Comic Number: " + nextComic);
 
-            //This Variable is to show comic based of search
-            let randomComic = `https://xkcd.com/${nextComic}/info.0.json`;
+            //This Variable will put the new comic strip value to the address bar
+            let nextComicStrip = `https://xkcd.com/${nextComic}/info.0.json`;
 
-            //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(randomComic);
+            //Fetch Method to get result of nextComicStrip
+            let resp = await fetch(comicUrl).then((resp) => {
 
-            //If GET is success then read 
-            let comicData = await resp.json().then(data => {
-            document.getElementById("comicTitle").innerHTML = data.title;
+                //If Data is not okay then throw error
+                if(!data.ok) {
+                    throw new Error(data.error);
+                }
 
-            var img = document.createElement("img");
-            img.src = data.img;
-            var showImage = document.getElementById("comicImg");
-            showImage.replaceChildren(img);
+                //Otherwise, return data
+                return data.json();
 
-            var month = data.month;
-            var day = data.day;
-            var year = data.year;
+            }).then(data => {
+                //If Successful then get data needed from API
 
-            document.getElementById("datePublished").innerHTML = month + "/" + day  + "/" + year;
-        });
+                //Comic Title
+                document.getElementById("comicTitle").innerHTML = data.title;
+
+                //Comic Image
+                var img = document.createElement("img");
+                img.src = data.img;
+                var showImage = document.getElementById("comicImg");
+                showImage.appendChild(img); 
+
+                //Comic Published Date
+                var month = data.month;
+                var day = data.day;
+                var year = data.year;
+                latestComicNum = data.num;
+
+                document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
+
+            }).catch(function(error) {
+                //Catch Any Error
+                console.log(error)
+            });
         }
