@@ -7,7 +7,7 @@
         const app = express();
         const cors = require("cors")
         app.use(cors({
-            origin: "https://case-study-stratus-360.herokuapp.com"
+            origin: "*"
         }));
 
         //This function is asynchronous which will wait until the comic API has been loaded where it
