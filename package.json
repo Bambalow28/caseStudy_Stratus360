@@ -1,0 +1,28 @@
+{
+  "name": "casestudy-stratus360",
+  "version": "1.0.0",
+  "description": "This is an application that shows comic strips into the web app",
+  "main": "app.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bambalow28/caseStudy_Stratus360.git"
+  },
+  "keywords": [
+    "javascript",
+    "heroku"
+  ],
+  "author": "Josh-Alanis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bambalow28/caseStudy_Stratus360/issues"
+  },
+  "homepage": "https://github.com/Bambalow28/caseStudy_Stratus360#readme"
+}

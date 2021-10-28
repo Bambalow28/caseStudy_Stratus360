@@ -3,13 +3,6 @@
         var latestComicNum;
         var currentComicNum;
 
-        const express = require("express");
-        const app = express();
-        const cors = require("cors")
-        app.use(cors({
-            origin: "*"
-        }));
-
         //This function is asynchronous which will wait until the comic API has been loaded where it
         //will return the result of the API.
         async function getComicData() {
