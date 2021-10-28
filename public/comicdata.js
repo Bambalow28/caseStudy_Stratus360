@@ -7,8 +7,8 @@
         const app = express();
         const cors = require("cors")
         app.use(cors({
-            origin: "https://xkcd.com/info.0.json"
-        }))
+            origin: "https://case-study-stratus-360.herokuapp.com"
+        }));
 
         //This function is asynchronous which will wait until the comic API has been loaded where it
         //will return the result of the API.
@@ -17,9 +17,7 @@
             let comicUrl = 'https://xkcd.com/info.0.json';
 
             //Using Fetch Method, Get the result when requesting comicURL
-            let resp = await fetch(comicUrl, {
-                mode: 'cors'
-            });
+            let resp = await fetch(comicUrl);
 
             //If GET is success then read 
             let comicData = await resp.json().then(data => {
