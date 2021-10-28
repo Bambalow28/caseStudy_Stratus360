@@ -38,7 +38,7 @@
                 var year = data.year;
                 latestComicNum = data.num;
                 currentComicNum = latestComicNum;
-                console.log('Current Comic: ' + currentComicNum)
+                console.log('Comic Issue #: ' + currentComicNum)
 
                 document.getElementById("dateShow").innerHTML = month + "/" + day  + "/" + year;
 
@@ -55,9 +55,8 @@
             var comicInput = document.getElementById("comicSearchValue").value;
 
             //Parse String to Int
-            latestComicNum = parseInt(comicInput);
-            currentComicNum = latestComicNum;
-            console.log('Comic Issue #:' + latestComicNum);
+            currentComicNum = parseInt(comicInput);
+            console.log('Comic Issue #:' + currentComicNum);
 
             //Add comicInput value into address bar for specific comic strip
             let specifiedComic = `https://xkcd.com/${comicInput}/info.0.json`;
@@ -104,7 +103,7 @@
             var parseComicToInt = parseInt(currentComicNum);
             var prevComic = parseComicToInt - 1;
             currentComicNum = prevComic;
-            console.log("Previous Comic Number: " + prevComic);
+            console.log("Comic Issue #: " + prevComic);
 
             //This Variable is to show comic based of search
             let previousComic = `https://xkcd.com/${prevComic}/info.0.json`;
@@ -202,7 +201,7 @@
                 //Add one to the current comic strip number and store into the currentComicNum variable
             var nextComic = parseComicToInt + 1;
             currentComicNum = nextComic;
-            console.log("Next Comic Number: " + nextComic);
+            console.log("Comic Issue #: " + nextComic);
 
             //This Variable will put the new comic strip value to the address bar
             let nextComicStrip = `https://xkcd.com/${nextComic}/info.0.json`;
